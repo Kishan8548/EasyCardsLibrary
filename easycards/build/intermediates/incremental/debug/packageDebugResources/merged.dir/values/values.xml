@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="EasyCardView">
+        <attr format="string" name="ec_title"/>
+        <attr format="string" name="ec_description"/>
+        <attr format="string" name="ec_imageUrl"/>
+        <attr format="reference" name="ec_imageSrc"/>
+        
+        <attr format="color" name="ec_titleColor"/>
+        <attr format="color" name="ec_descriptionColor"/>
+        
+        <attr format="dimension" name="ec_titleTextSize"/>
+        <attr format="dimension" name="ec_descriptionTextSize"/>
+        
+        <attr format="color" name="ec_backgroundColor"/>
+        <attr format="color" name="ec_backgroundGradientStart"/>
+        <attr format="color" name="ec_backgroundGradientEnd"/>
+        
+    </declare-styleable>
+</resources>

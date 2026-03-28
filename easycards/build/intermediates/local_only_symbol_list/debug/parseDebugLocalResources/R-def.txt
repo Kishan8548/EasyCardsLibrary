@@ -1,0 +1,20 @@
+R_DEF: Internal format may change without notice
+local
+attr? ec_backgroundColor
+attr? ec_backgroundGradientEnd
+attr? ec_backgroundGradientStart
+attr? ec_description
+attr? ec_descriptionColor
+attr? ec_descriptionTextSize
+attr? ec_imageSrc
+attr? ec_imageUrl
+attr? ec_title
+attr? ec_titleColor
+attr? ec_titleTextSize
+id card_background_container
+id card_description
+id card_image
+id card_text_container
+id card_title
+layout easy_card_layout
+styleable EasyCardView ec_title ec_description ec_imageUrl ec_imageSrc ec_titleColor ec_descriptionColor ec_titleTextSize ec_descriptionTextSize ec_backgroundColor ec_backgroundGradientStart ec_backgroundGradientEnd
