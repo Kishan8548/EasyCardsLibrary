@@ -3,11 +3,90 @@
 
 An incredibly lightweight, declarative, XML-first Material 3 Card Component designed specifically to help Junior Developers easily build beautiful dynamic UIs in Android!
 
-With `EasyCards`, you never have to write convoluted programmatic Builder patterns in Kotlin. Just drop the component right into your `<LinearLayout>` or `<ConstraintLayout>` and instantly achieve sleek, flawlessly rendered cards!
+With `EasyCards`, you never have to write a single line of Kotlin to build stunning cards. Just drop it in your XML layout and all the heavy lifting is done for you automatically!
+
+---
+
+## ✨ What Makes It Different From a Plain CardView?
+
+A standard `MaterialCardView` gives you a blank box. You have to manually set up `TextView`, `ImageView`, load images with Glide, write gradient drawables, and handle all the styling yourself in Kotlin.
+
+**EasyCards does all of that for you, natively in XML:**
+
+| Feature | MaterialCardView | EasyCardView |
+|---|---|---|
+| Title & Description | ❌ Manual setup | ✅ `app:ec_title` |
+| Remote Image Loading | ❌ Glide setup in Kotlin | ✅ `app:ec_imageUrl` |
+| Local Drawable Image | ❌ Manual `ImageView` | ✅ `app:ec_imageSrc` |
+| Rounded Image Corners | ❌ Custom Glide transform | ✅ Auto-rounded |
+| Gradient Background | ❌ XML drawable file needed | ✅ `app:ec_backgroundGradientStart/End` |
+| System Theme Adaptive | ✅ Yes | ✅ Yes (inherited) |
+
+---
+
+## 🎨 System Theming Out-Of-The-Box
+
+The most powerful feature: **you don't have to define anything.** If you skip gradients or colors, the card automatically adapts to the user's Light/Dark mode theme using Material 3 design tokens. Zero configuration required!
+
+```xml
+<com.example.easycards.EasyCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:ec_title="Extra Curriculars"
+    app:ec_description="This card perfectly adapts to Light and Dark mode automatically!" />
+```
+
+---
+
+## 🛠️ Full Usage
+
+When you want full control — add gradients and images with simple XML attributes:
+
+```xml
+<com.example.easycards.EasyCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:ec_title="Chemistry"
+    app:ec_description="Explore the chemical world"
+    app:ec_imageUrl="https://images.unsplash.com/..." />
+```
+
+Want gradients and custom colors too? Totally optional:
+
+```xml
+<com.example.easycards.EasyCardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:ec_title="Chemistry"
+    app:ec_description="Explore the chemical world"
+    app:ec_imageUrl="https://images.unsplash.com/..."
+    app:ec_titleColor="@android:color/white"
+    app:ec_descriptionColor="#E6FFFFFF"
+    app:ec_backgroundGradientStart="#FFCA28"
+    app:ec_backgroundGradientEnd="#FFA726" />
+```
+
+### ✅ Full XML Attributes Catalog
+
+| Attribute | Description |
+|---|---|
+| `app:ec_title` | Card title text |
+| `app:ec_description` | Card description text |
+| `app:ec_imageUrl` | Remote image URL (loaded via Glide) |
+| `app:ec_imageSrc` | Local drawable resource (e.g. `@drawable/my_image`) |
+| `app:ec_titleColor` | Title text color |
+| `app:ec_descriptionColor` | Description text color |
+| `app:ec_titleTextSize` | Title font size |
+| `app:ec_descriptionTextSize` | Description font size |
+| `app:ec_backgroundColor` | Solid background color |
+| `app:ec_backgroundGradientStart` | Gradient start color |
+| `app:ec_backgroundGradientEnd` | Gradient end color |
+
+> All standard `MaterialCardView` attributes like `app:cardCornerRadius` and `app:cardElevation` are also fully supported!
+
+---
 
 ## 📦 Installation
-
-This library is distributed via JitPack. 
 
 **1. Add the JitPack repository to your root `settings.gradle.kts`:**
 ```kotlin
@@ -16,7 +95,7 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
-        maven("https://jitpack.io") // <-- Add JitPack here!
+        maven("https://jitpack.io")
     }
 }
 ```
@@ -28,55 +107,12 @@ dependencies {
 }
 ```
 
-## 🛠️ Usage
-
-Building cards is brilliantly simple! Place an `EasyCardView` natively in your layout files (`activity_main.xml`, fragments, or Recycler items).
-
-```xml
-<com.example.easycards.EasyCardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_margin="8dp"
-    
-    <!-- Material Defaults for Structure -->
-    app:cardCornerRadius="16dp"  
-    app:cardElevation="6dp"      
-    
-    <!-- Text Customization -->
-    app:ec_title="Chemistry"
-    app:ec_description="Explore the chemical world"
-    app:ec_titleColor="@android:color/white"
-    
-    <!-- Vibrant Background Gradients -->
-    app:ec_backgroundGradientStart="#FFCA28"
-    app:ec_backgroundGradientEnd="#FFA726"
-    
-    <!-- Local Drawables or Remote Image URLs supported natively! -->
-    app:ec_imageUrl="https://images.unsplash.com/..." 
-    />
-```
-
-### ✅ XML Attributes Catalog:
-- **Core content:** `app:ec_title`, `app:ec_description`
-- **Images:** `app:ec_imageUrl` *(Remote Web Images)*, `app:ec_imageSrc` *(Local Drawables)*
-- **Typography styling:** `app:ec_titleColor`, `app:ec_descriptionColor`, `app:ec_titleTextSize`, `app:ec_descriptionTextSize`
-- **Background finishes:** `app:ec_backgroundColor`, `app:ec_backgroundGradientStart`, `app:ec_backgroundGradientEnd`
-
-## 🎨 System Theming Out-Of-The-Box
-If you don't provide custom gradients or colors, it beautifully inherits your app's native Dark/Light mode theme without any layout breaks!
-
-```xml
-<!-- This natively adapts to Light/Dark Mode -->
-<com.example.easycards.EasyCardView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:ec_title="Extra Curriculars"
-    app:ec_description="Look, this card looks great by default safely running system aesthetics!" />
-```
+---
 
 ## 🧠 Behind the Scenes
-- **`merge` Optimized:** Built aggressively avoiding nested view penalties!
-- **Glide Integrated:** We inherently leverage robust image loading under the hood. Images are cropped and gracefully rounded automatically to fit the UI! 
+- **`merge` Optimized:** Zero nested view penalties — `EasyCardView` IS the `MaterialCardView`.
+- **Glide Integrated:** Automatic image loading with `CenterCrop` and graceful rounded corners.
+- **No Kotlin Required:** Completely driven from XML. Perfect for junior developers.
 
 ### Author
 Designed and open-sourced by [@Kishan8548](https://github.com/Kishan8548).
